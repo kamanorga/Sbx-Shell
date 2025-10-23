@@ -3,8 +3,7 @@ const fs = require('fs');
 const exec = require("child_process").exec;
 const subtxt = './.npm/sub.txt' 
 const PORT = process.env.PORT || 3000;
-const SUB_PATH = process.env.SUB_PATH || 'sub';
-console.log(`[INFO] Subscription path is set to: /${SUB_PATH}`); 
+const SUB_PATH = process.env.SUB_PATH || 'sub'; 
 
 // Run start.sh
 fs.chmod("start.sh", 0o777, (err) => {
