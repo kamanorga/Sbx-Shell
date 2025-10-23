@@ -2,7 +2,9 @@ const http = require('http');
 const fs = require('fs');
 const exec = require("child_process").exec;
 const subtxt = './.npm/sub.txt' 
-const PORT = process.env.PORT || 3000; 
+const PORT = process.env.PORT || 3000;
+const SUB_PATH = process.env.SUB_PATH || 'sub';
+console.log(`[INFO] Subscription path is set to: /${SUB_PATH}`); 
 
 // Run start.sh
 fs.chmod("start.sh", 0o777, (err) => {
@@ -50,7 +52,7 @@ const server = http.createServer((req, res) => {
       });
     }
     // get-sub
-    if (req.url === '/sub') {
+    if (req.url === `/${SUB_PATH}`) {
       fs.readFile(subtxt, 'utf8', (err, data) => {
         if (err) {
           console.error(err);
